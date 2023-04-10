@@ -4,6 +4,8 @@ from src.data_loader import DataLoder
 from src.question1 import Question1
 from src.question2 import Question2
 from src.question3 import Question3
+from src.question4 import Question4
+
 
 ouput_path = os.path.join(os.getcwd(),"data","output")
 ref_path = os.path.join(os.getcwd(),"data","references.json")
@@ -35,7 +37,14 @@ def question3():
     question3.get_ref_balanced()
     question3.visualise()
 
-
+def question4():
+    question4 = Question4(ouput_path)
+    question4.prepare_data()
+    question4.get_bad_annotators()
+    question4.visualise()
+    
+    
+ 
 if __name__ == '__main__':
-   question3()
+   question4()
 

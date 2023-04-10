@@ -46,7 +46,7 @@ class Utils:
                
         for key in task_output_dict:
             if SequenceMatcher(None, key, "answer").ratio() >=ratio:
-               output["answer"]= task_output_dict[key]
+               output["answer"]=Utils.fix_answer( task_output_dict[key])
             if SequenceMatcher(None, key, "cant_solve").ratio() >=ratio:
                output["cant_solve"]= task_output_dict[key]
             if SequenceMatcher(None, key, "corrupt_data").ratio() >=ratio:
@@ -73,7 +73,7 @@ class Utils:
             if SequenceMatcher(None, match, "project_node_input_id").ratio() >=ratio:
                output["project_id"] =Utils.clear_str_json(  next(all_matches).group())
             if SequenceMatcher(None, match, "answer").ratio() >=ratio:
-               output["answer"] = Utils.clear_str_json(  next(all_matches).group())
+               output["answer"] =Utils.fix_answer( Utils.clear_str_json(  next(all_matches).group()))
             if SequenceMatcher(None, match, "loss").ratio() >=ratio:
                output["loss"] = Utils.clear_str_json(  next(all_matches).group())
             if SequenceMatcher(None, match, "cant_solve").ratio() >=ratio:
@@ -87,6 +87,13 @@ class Utils:
             if SequenceMatcher(None, match, "image_url").ratio() >=ratio:
                output["image_id"] =Utils.clear_str_json( Utils.extract_image_id(next(all_matches).group()))
         return output
-        
+     
+     
+    @staticmethod
+    def fix_answer(yes_str) -> str:
+       if SequenceMatcher(None, yes_str, "yes").ratio() >= 0.8:
+          return "yes"
+       else: 
+          return "no"
  
         
