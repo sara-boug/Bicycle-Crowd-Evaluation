@@ -2,23 +2,23 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-import os
+from src.question import Question
 
 
-class Question1: 
-    fig, ax = plt.subplots(2)
+class Question1(Question): 
 
     data_abc = {}
     data_d = {}
     
     def __init__(self, input_path) -> None:
-        self._intput_path = input_path
-        self._file_paths =[os.path.join(input_path, file) for file in  os.listdir(input_path)]
-        self._file_paths.sort()
+        super().__init__(input_path)
+        self.fig, self.ax = plt.subplots(2)
+
     
     def annotators_number(self,) -> int:
         # Reflects the number of unique user ids 
         return len(self.data_abc.keys())
+    
     
     def annotation_time(self)->None:
         list_min = []
@@ -50,7 +50,6 @@ class Question1:
             answer = self.data_abc[key]["answer"]
             answers.append(answer)
             
-        
         self.ax[1].plot(answers,color='deeppink')
         self.ax[1].set_xlabel("User indices")
         self.ax[1].set_ylim(ymax=100, ymin=0)
@@ -84,23 +83,23 @@ class Question1:
         ax.bar(indices, yes_list, color='steelblue', width =width,label="yes")
         ax.bar(x+width, no_list, color='crimson', width=width, label="no")
         ax.set_xlim(xmax=10, xmin=0)
-        ax.legend()
         ax.set_title("Images with the heighest diagreement (yes/no ratio)")
         plt.xticks(rotation=45, ha='right')
         ax.grid()
+        ax.legend()
+
           
-                   
     def visualize(self)->None:
         self.data_abc.clear()
         plt.show()
         
     def prepare_data(self)->None:
-        for file_path in self._file_paths: 
+        for file_path in self.file_paths: 
             df = pd.read_csv(file_path)   
-            self.process_df_abc(df) 
-            self.process_df_d(df) 
+            self.__process_df_abc(df) 
+            self.__process_df_d(df) 
                   
-    def process_df_abc(self,dataFrame:pd.DataFrame):
+    def __process_df_abc(self,dataFrame:pd.DataFrame):
         dfs =  dataFrame.groupby("user_id")
         for state, frame in dfs : 
             durations= frame["duration_ms"].to_list()
@@ -113,7 +112,7 @@ class Question1:
                 self.data_abc[state]["answer"] =self.data_abc[state]["answer"] + answer
            
            
-    def process_df_d(self,dataFrame:pd.DataFrame):
+    def __process_df_d(self,dataFrame:pd.DataFrame):
         dfs =  dataFrame.groupby("image_id")
         for state, frame in dfs : 
             init = {"yes":0, "no":0}

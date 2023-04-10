@@ -1,7 +1,9 @@
+import os
+
 from src.data_loader import DataLoder
 from src.question1 import Question1
-
-import os
+from src.question2 import Question2
+from src.question3 import Question3
 
 ouput_path = os.path.join(os.getcwd(),"data","output")
 ref_path = os.path.join(os.getcwd(),"data","references.json")
@@ -20,8 +22,20 @@ def question1():
     question1.annotation_time()
     question1.annotators_avg_answ()
     question1.visualize()
+     
+def question2():
+    question2 = Question2(ouput_path)
+    question2.prepare_data()
+    question2.get_annotation_trend()
+    question2.visualise()
     
-    
+def question3():
+    question3 = Question3(ref_path)
+    question3.prepare_data()
+    question3.get_ref_balanced()
+    question3.visualise()
+
+
 if __name__ == '__main__':
-   question1()
+   question3()
 
