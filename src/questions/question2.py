@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-from src.question import Question
+from src.questions.question import Question
 
 class Question2(Question): 
     dataframe:pd.DataFrame  = pd.DataFrame({})
@@ -48,10 +48,6 @@ class Question2(Question):
             df = pd.read_csv(file_path)
             self.__process_df(df)
               
-    
-    def visualise(self) -> None:
-        plt.show()
-        return super().visualise()
     
     def __process_df(self,df:pd.DataFrame)->None:
         cantsolve_df = df[(df["cant_solve"]=="true") |(df["cant_solve"]=="True")]

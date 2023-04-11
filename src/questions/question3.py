@@ -1,7 +1,7 @@
 import pandas as pd 
 import matplotlib.pyplot as plt
 
-from src.question import Question
+from src.questions.question import Question
 
 
 class Question3(Question): 
@@ -29,5 +29,3 @@ class Question3(Question):
         self.ref_false = arr_size - self.ref_true
         del ref_df
          
-    def visualise(self) -> None:
-        plt.show()

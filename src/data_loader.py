@@ -14,6 +14,8 @@ class DataLoder:
     _file_index = 0
         
     def __init__(self,intput_path:str, output_path:str, ref_path:str) -> None:
+        if not os.path.exists(intput_path) or not os.path.exists(ref_path):
+           raise Exception("The path to the data is not found")
         self._input_file = open(intput_path, 'r')
         self._output_path =output_path
         self.__setup_csv(output_path)

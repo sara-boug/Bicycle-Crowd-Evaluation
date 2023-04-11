@@ -1,6 +1,8 @@
 from abc import abstractmethod, ABC
 import os
 
+import matplotlib.pyplot as plt 
+
 class Question(ABC): 
     def __init__(self, input_path=None, ref_path=None) -> None:
         if input_path != None:
@@ -17,10 +19,9 @@ class Question(ABC):
     def prepare_data(self)->None:
         pass
     
-    @abstractmethod
     def visualise(self)->None:
+        plt.show()        
         
-        pass
 
     
     

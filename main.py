@@ -1,50 +1,33 @@
-import os
+import argparse
 
-from src.data_loader import DataLoder
-from src.question1 import Question1
-from src.question2 import Question2
-from src.question3 import Question3
-from src.question4 import Question4
+import src.question_runner  as runner 
 
-
-ouput_path = os.path.join(os.getcwd(),"data","output")
-ref_path = os.path.join(os.getcwd(),"data","references.json")
-
-
-def preprocess():
-    input_path = os.path.join(os.getcwd(),"data","anonymized_project.json")
-    data_loader = DataLoder(input_path, ouput_path, ref_path)
-    data_loader.preload_ref()
-    data_loader.preload_data()
-    
-def question1():
-    question1 = Question1(ouput_path)
-    question1.prepare_data()
-    question1.annotators_disag()
-    question1.annotation_time()
-    question1.annotators_avg_answ()
-    question1.visualize()
-     
-def question2():
-    question2 = Question2(ouput_path)
-    question2.prepare_data()
-    question2.get_annotation_trend()
-    question2.visualise()
-    
-def question3():
-    question3 = Question3(ref_path)
-    question3.prepare_data()
-    question3.get_ref_balanced()
-    question3.visualise()
-
-def question4():
-    question4 = Question4(ouput_path)
-    question4.prepare_data()
-    question4.get_bad_annotators()
-    question4.visualise()
-    
-    
- 
 if __name__ == '__main__':
-   question4()
+    
+   parser = argparse.ArgumentParser()
+   
+   parser.add_argument("-pre", help="Preprocess the available data", action="store_true")
+   parser.add_argument("-q1", help="Runs question 1",action="store_true")
+   parser.add_argument("-q2", help="Runs question 2",action="store_true")
+   parser.add_argument("-q3", help="Runs question 3",action="store_true")
+   parser.add_argument("-q4", help="Runs question 4",action="store_true")
+   
+   args = parser.parse_args()
+   
+   if args.pre:
+      runner.preprocess()
+   if args.q1 :
+      runner.question1()
+   if args.q2 :
+      runner.question2()
+   if args.q3 :
+      runner.question3()
+   if args.q4 :
+      runner.question4()
+       
+   
+   
+   
+   
+   
 

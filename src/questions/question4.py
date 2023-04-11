@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-from src.question import Question
+from src.questions.question import Question
 
 class Question4(Question): 
     data = {}
@@ -35,9 +35,7 @@ class Question4(Question):
             df = pd.read_csv(file_path)
             self.__process_df(df)
             
-    def visualise(self) -> None:
-        plt.show()
-    
+                
     def __process_df(self,dataFrame:pd.DataFrame)->None: 
         dfs =  dataFrame.groupby("user_id")
         for state, frame in dfs : 
