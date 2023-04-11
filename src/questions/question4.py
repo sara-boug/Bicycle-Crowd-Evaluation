@@ -9,7 +9,12 @@ class Question4(Question):
     def __init__(self, input_path) -> None:
         super().__init__(input_path)
     
-    def get_bad_annotators(self)-> None: 
+    def get_bad_annotators(self)-> None:
+        """
+        Generates a Histogram to describe the errors overall error per users 
+                  and a pie chart that describes the distribution of error among users with MSE>=0.1
+        
+        """ 
         mse_err = []
         mse_err_only =[]
         for key in self.data: 
@@ -37,6 +42,9 @@ class Question4(Question):
             
                 
     def __process_df(self,dataFrame:pd.DataFrame)->None: 
+         # The data is grouped per user_id 
+         # for each, two vectors are generated, one for the ref and the second one for the user answers
+         # the error is measured between these two vectors to get insight about bed vs good annotators 
         dfs =  dataFrame.groupby("user_id")
         for state, frame in dfs : 
             answer= (frame["answer"].to_numpy() == "yes") *1

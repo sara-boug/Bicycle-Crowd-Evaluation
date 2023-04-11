@@ -1,5 +1,3 @@
-import os 
-
 from src.config import output_path, ref_path, input_path
 from src.data_loader import DataLoder
 from src.questions.question1 import Question1
@@ -15,25 +13,25 @@ def preprocess():
 def question1():
     question1 = Question1(output_path)
     question1.prepare_data()
-    question1.annotators_disag()
-    question1.annotation_time()
-    question1.annotators_avg_answ()
+    question1.get_annotators_disag()
+    question1.get_annotation_time()
+    question1.get_annotators_avg_answ()
     question1.visualize()
      
 def question2():
     question2 = Question2(output_path)
     question2.prepare_data()
     question2.get_annotation_trend()
-    question2.visualise()
+    question2.visualize()
     
 def question3():
     question3 = Question3(ref_path)
     question3.prepare_data()
     question3.get_ref_balanced()
-    question3.visualise()
+    question3.visualize()
 
 def question4():
     question4 = Question4(output_path)
     question4.prepare_data()
     question4.get_bad_annotators()
-    question4.visualise()
+    question4.visualize()

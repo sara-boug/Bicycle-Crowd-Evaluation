@@ -7,20 +7,23 @@ from src.questions.question import Question
 
 class Question1(Question): 
 
-    data_abc = {}
-    data_d = {}
+    data_abc = {} # The extracted data for question abc
+    data_d = {} # The extracted data for question d 
     
     def __init__(self, input_path) -> None:
         super().__init__(input_path)
         self.fig, self.ax = plt.subplots(2)
 
     
-    def annotators_number(self,) -> int:
+    def get_annotators_number(self,) -> int:
         # Reflects the number of unique user ids 
         return len(self.data_abc.keys())
     
     
-    def annotation_time(self)->None:
+    def get_annotation_time(self)->None:
+        """ 
+             Generates a linechart describing the min,max,average duration time per user
+        """
         list_min = []
         list_max = []
         list_avg = []
@@ -44,7 +47,10 @@ class Question1(Question):
         self.ax[0].legend(loc="upper right")
         self.ax[0].grid()
     
-    def annotators_avg_answ(self): 
+    def get_annotators_avg_answ(self): 
+        """ 
+             Generated a line-chart describing the amount of answers provided per user
+        """
         answers = []
         for key in self.data_abc: 
             answer = self.data_abc[key]["answer"]
@@ -56,7 +62,10 @@ class Question1(Question):
         self.ax[1].set_ylabel("Amout of answers")
         self.ax[1].grid()
         
-    def annotators_disag(self):
+    def get_annotators_disag(self):
+        """ 
+           Generates a bar-chart describing the yes/No answers for the images with high disagreement
+        """
         fig, ax = plt.subplots()
         yes_list = []
         no_list = []
@@ -72,6 +81,7 @@ class Question1(Question):
                 min_v = min(yes,no)
                 max_v = max(yes,no)
                 ratio = min_v/max_v
+                # Higher ratio between yes and no describes high disagreement
                 if 1>ratio>0.7: 
                    yes_list.append(yes)
                    no_list.append(no)
@@ -100,6 +110,9 @@ class Question1(Question):
             self.__process_df_d(df) 
                   
     def __process_df_abc(self,dataFrame:pd.DataFrame):
+        # This allows extracting the data per user and getting insight about each individual user
+        # The durations will be accumulated per individual user in an array 
+        # The number of answers are summed per user 
         dfs =  dataFrame.groupby("user_id")
         for state, frame in dfs : 
             durations= frame["duration_ms"].to_list()
@@ -113,6 +126,8 @@ class Question1(Question):
            
            
     def __process_df_d(self,dataFrame:pd.DataFrame):
+        # The data in this question is grouped by the image id
+        # Then per image id the yes/No are accumulated 
         dfs =  dataFrame.groupby("image_id")
         for state, frame in dfs : 
             init = {"yes":0, "no":0}

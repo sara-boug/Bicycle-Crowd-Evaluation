@@ -17,9 +17,12 @@ class Question(ABC):
     
     @abstractmethod
     def prepare_data(self)->None:
+        """ 
+           Iterates through all the files and process each file individually 
+        """
         pass
     
-    def visualise(self)->None:
+    def visualize(self)->None:
         plt.show()        
         
 

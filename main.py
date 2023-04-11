@@ -2,8 +2,8 @@ import argparse
 
 import src.question_runner  as runner 
 
+
 if __name__ == '__main__':
-    
    parser = argparse.ArgumentParser()
    
    parser.add_argument("-pre", help="Preprocess the available data", action="store_true")

@@ -5,13 +5,16 @@ from src.questions.question import Question
 
 
 class Question3(Question): 
-    ref_true = 0
-    ref_false= 0
+    ref_true = 0 # The number of times where it is true
+    ref_false= 0 # The number of times where it is false
     def __init__(self, ref_path) -> None:
         super().__init__(ref_path=ref_path)
     
     
     def get_ref_balanced(self) -> None: 
+        """
+          Compares the percentage of each possible value in the reference dataset
+        """
         size = self.ref_true + self.ref_false
         pie_data = [ 
                     self.ref_true/size,
