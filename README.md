@@ -3,10 +3,11 @@
 ## How to run the program 
 
 ### initial constraints 
-All the dataset should be unzipped and put in this folder **[project_dir]/data/**
-the name or the path of the folder could be changed from the config file found in **[poject_dir]/src/config.py**
-the name of the two files should be __references.json__ and __anonymized_project.json__. 
+All the dataset should be unzipped and put in this folder **[project_dir]/data/**  
+The name or the path of the folder could be changed from the config file found in **[poject_dir]/src/config.py**  
+The name of the two files should be __references.json__ and __anonymized_project.json__. 
 If you choose to use a different filename, it could be modified in **[poject_dir]/src/config.py**
+
 The code has been developed using Python3 on an ubuntu operating systems 
 
 --------------------------------
