@@ -46,6 +46,7 @@ class Question1(Question):
         self.ax[0].set_ylim(ymax=6000, ymin=0)
         self.ax[0].legend(loc="upper right")
         self.ax[0].grid()
+        self.ax[0].set_title("Avg, min, max duration per annotator")
     
     def get_annotators_avg_answ(self): 
         """ 
@@ -59,9 +60,10 @@ class Question1(Question):
         self.ax[1].plot(answers,color='mediumslateblue')
         self.ax[1].set_xlabel("User indices")
         self.ax[1].set_ylim(ymax=100, ymin=0)
-        self.ax[1].set_ylabel("Amout of answers")
+        self.ax[1].set_ylabel("Amount of answers")
         self.ax[1].grid()
-        
+        self.ax[0].set_title("Amount of answers per annotator")
+
     def get_annotators_disag(self):
         """ 
            Generates a bar-chart describing the yes/No answers for the images with high disagreement
