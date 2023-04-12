@@ -19,21 +19,21 @@ class Question4(Question):
         mse_err_only =[]
         for key in self.data: 
             mse_err.append( self.data[key])
-            if self.data[key]>=0.1:
+            if self.data[key]>=0.2:
                mse_err_only.append(self.data[key])
         
         
         fig, ax = plt.subplots(2)
  
         ax[0].set_title("Histogram of annotators mse error")
-        ax[0].hist(mse_err, bins=40,  )
+        ax[0].hist(mse_err, bins=40, color='thistle' )
         
         counts, bins = np.histogram(mse_err_only)
-        pie_data =counts/ counts.sum()
-        labels = ["{:.1f}".format(bin) for bin in bins[:-1] ] 
-        ax[1].pie(pie_data,labeldistance=1.2 )
+        pie_data = np.abs( counts/ counts.sum())
+        labels = ["{:.2f}".format(bin) for bin in bins[:-1] ] 
+        ax[1].pie(pie_data,labeldistance=1.2 , colors=["thistle", "pink", "indigo","purple", "violet","darkviolet", "fuchsia","plum","orchid", "hotpink"])
         ax[1].legend(labels,loc="lower right")
-        ax[1].set_title("MSE error > 0.1")
+        ax[1].set_title("MSE error >= 0.2")
                    
     def prepare_data(self)->None:
         for file_path in self.file_paths: 

@@ -20,8 +20,9 @@ class Question3(Question):
                     self.ref_true/size,
                     self.ref_false/size,
                     ]
-        plt.pie(pie_data, labels=["True : {}".format(self.ref_true), "False : {}".format(self.ref_false)], autopct="%1.1f%%", colors=['skyblue', 'tomato'])
-        plt.title("True vs False is_bicycle")
+        plt.pie(pie_data, autopct="%1.1f%%", colors=['thistle', 'darkslateblue'])
+        plt.title("True vs False is_bicycle", loc ="center")
+        plt.legend(labels=["True : {}".format(self.ref_true), "False : {}".format(self.ref_false)])
         
         
     def prepare_data(self) -> None:

@@ -30,7 +30,7 @@ python3 main.py -q2
 ``` 
 python3 main.py -q3
 ```
-* To run question 1
+* To run question 4
 ``` 
 python3 main.py -q4
 ```

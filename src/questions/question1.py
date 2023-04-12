@@ -39,10 +39,10 @@ class Question1(Question):
                
         self.ax[0].plot(np.array(list_min),color='thistle', label="min" )
         self.ax[0].plot( np.array(list_max),color='mediumslateblue', label= "max")
-        self.ax[0].plot(np.array(list_avg),color='darkslateblue', label="Avg")
+        self.ax[0].plot(np.array(list_avg),color='darkslateblue', label="avg")
         
         self.ax[0].set_xlabel("User indices")
-        self.ax[0].set_ylabel("Durations (s)")
+        self.ax[0].set_ylabel("Durations (ms)")
         self.ax[0].set_ylim(ymax=6000, ymin=0)
         self.ax[0].legend(loc="upper right")
         self.ax[0].grid()
@@ -56,7 +56,7 @@ class Question1(Question):
             answer = self.data_abc[key]["answer"]
             answers.append(answer)
             
-        self.ax[1].plot(answers,color='deeppink')
+        self.ax[1].plot(answers,color='mediumslateblue')
         self.ax[1].set_xlabel("User indices")
         self.ax[1].set_ylim(ymax=100, ymin=0)
         self.ax[1].set_ylabel("Amout of answers")
@@ -82,18 +82,19 @@ class Question1(Question):
                 max_v = max(yes,no)
                 ratio = min_v/max_v
                 # Higher ratio between yes and no describes high disagreement
-                if 1>ratio>0.7: 
+                if 1>=ratio>0.7: 
                    yes_list.append(yes)
                    no_list.append(no)
                    indices.append(key)
                    
         self.data_d.clear()
+        print(len(indices))
         x =np.arange(len(indices))
         width =0.3
-        ax.bar(indices, yes_list, color='steelblue', width =width,label="yes")
-        ax.bar(x+width, no_list, color='crimson', width=width, label="no")
-        ax.set_xlim(xmax=10, xmin=0)
-        ax.set_title("Images with the heighest diagreement (yes/no ratio)")
+        ax.bar(indices, yes_list, color='thistle', width =width,label="yes")
+        ax.bar(x+width, no_list, color='darkslateblue', width=width, label="no")
+        ax.set_xlim(xmax=15, xmin=-1)
+        ax.set_title("Images with the highest disagreement (yes/no ratio)")
         plt.xticks(rotation=45, ha='right')
         ax.grid()
         ax.legend()
