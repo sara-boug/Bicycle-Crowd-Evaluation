@@ -8,7 +8,7 @@ The name or the path of the folder could be changed from the config file found i
 The name of the two files should be __references.json__ and __anonymized_project.json__. 
 If you choose to use a different filename, it could be modified in **[poject_dir]/src/config.py**
 
-The code has been developed using Python3 on an ubuntu operating systems 
+The code has been developed using Python3 on an Ubuntu operating system 
 
 --------------------------------
 Initially, run the following command: 
