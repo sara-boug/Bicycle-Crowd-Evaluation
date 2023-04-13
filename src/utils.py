@@ -68,12 +68,13 @@ class Utils:
     @staticmethod
     def extract_from_invalid_json(data:str)->dict:
         """ 
-         EXtracts parameters from an invalid json string
+         EXtracts parameters from an invalid json 
+         
         Args:
-           data (str): The string to each the parameter from
+           data (str): The string to extract the parameter from
 
         Returns:
-           dict: Contains all the extracted parameters
+           dict: The extracted parameters
         """
         output = {}
         ratio = 0.6
@@ -118,7 +119,7 @@ class Utils:
            str_input (_type_):The string on which the match is performed
 
        Returns:
-           str: _description_
+           str: The string obtained after the matching
        """       
        if type(input) is bool: 
           if input == True : print("TRUEEE")

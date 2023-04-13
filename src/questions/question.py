@@ -4,7 +4,17 @@ import os
 import matplotlib.pyplot as plt 
 
 class Question(ABC): 
+    """  
+    Defines a base class for the implementation of the questions
+
+    """
     def __init__(self, input_path=None, ref_path=None) -> None:
+        """ 
+        Args:
+            input_path : The path to the folder containing the generated data 
+            ref_path : The path to the reference file
+
+        """
         if input_path != None:
             self.file_paths =[os.path.join(input_path, file) for file in  os.listdir(input_path)]
             if len(self.file_paths) == 0 :

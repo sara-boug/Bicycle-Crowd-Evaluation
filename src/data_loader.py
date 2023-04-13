@@ -32,7 +32,7 @@ class DataLoder:
     
     def preload_ref(self)->None: 
         """ 
-            Loads the refference file 
+            Loads the reference file 
         """
         f = open(self._ref_path)
         self._ref_data = json.load(f)
@@ -89,7 +89,7 @@ class DataLoder:
           
         Args:
             json (str): The string to pe processed
-            is_valid (bool): Defines whether  is a valid json
+            is_valid(bool): Whether the string passed is a valid json
         """
         try:
             row = {}
@@ -117,7 +117,7 @@ class DataLoder:
     def write_to_csv(self,):
         """
           Write the accumulated data to a csv file 
-          a new file is generated upon each write
+          A new file is generated upon each write
         """
         file_index = str(self._file_index).zfill(2)
         file_path = os.path.join(self._output_path, "output_{}.csv".format(file_index))
