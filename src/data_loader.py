@@ -112,7 +112,7 @@ class DataLoder:
                 self.write_to_csv()
              
         except KeyError as err:
-            print(err)
+            logger.error("Error occurred while accessing the key. The error {}".format(err))
         
     def write_to_csv(self,):
         """

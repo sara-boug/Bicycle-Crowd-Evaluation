@@ -90,7 +90,6 @@ class Question1(Question):
                    indices.append(key)
                    
         self.data_d.clear()
-        print(len(indices))
         x =np.arange(len(indices))
         width =0.3
         ax.bar(indices, yes_list, color='thistle', width =width,label="yes")

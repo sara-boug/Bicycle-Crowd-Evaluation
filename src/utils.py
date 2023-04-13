@@ -122,7 +122,6 @@ class Utils:
            str: The string obtained after the matching
        """       
        if type(input) is bool: 
-          if input == True : print("TRUEEE")
           return str(input)
        input = str.lower(str(input))
        

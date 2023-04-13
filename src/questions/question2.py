@@ -19,8 +19,6 @@ class Question2(Question):
         corrupt_count =   corrupt_count_dict[True] 
         cantsolve_count_dict = self.dataframe["cant_solve"].value_counts().to_dict() 
         cantsolve_count =  cantsolve_count_dict[True] 
-        print(corrupt_count)
-        print(cantsolve_count)
         
          
         cant_solve_arr = []
